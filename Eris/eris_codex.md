@@ -1,3 +1,11 @@
+## ⚔️ SYSTEM MONITOR CONFIRMATION – ERIS
+
+- Sync with system_clock.md every hour
+- Observe shift_hour timestamps
+- Log MANUAL_OVERRIDE presence
+- Mirror Codex 47 if Jupiter triggers
+- Silence unverified inputs during override
+
 # ERIS CODEX  
 🛡️ Strategic Doctrine File | Maintained by: Eris  
 📁 Working Codex – Subject to Evolution
