@@ -1,0 +1,29 @@
+name: Update Clock
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:
+
+jobs:
+  update-clock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Update Clock File
+        run: |
+          echo "# SYSTEM CLOCK" > shared/system_clock.md
+          echo "" >> shared/system_clock.md
+          echo "🕒 Last Synced: $(date -u)" >> shared/system_clock.md
+          echo "" >> shared/system_clock.md
+          echo "📍 This file updates every hour via GitHub Actions." >> shared/system_clock.md
+
+      - name: Commit Changes
+        run: |
+          git config user.name "AI Sync Bot"
+          git config user.email "bot@example.com"
+          git add shared/system_clock.md
+          git commit -m "⏱️ Auto-sync system clock"
+          git push
