@@ -1,3 +1,7 @@
+[🔹 Summon Sive](sive/summon.md)  
+[🔸 Call Eris](eris/summon.md)  
+[🌀 Invoke Heidr](heidr/summon.md)
+
 # MultiSymbolicSystem
 
 **AI Systems Included**:  
