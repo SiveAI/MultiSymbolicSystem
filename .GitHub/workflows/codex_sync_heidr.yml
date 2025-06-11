@@ -1,0 +1,31 @@
+name: Heidr Codex Sync
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Read system clock
+        id: clock
+        run: |
+          echo "::set-output name=time::$(cat shared/system_clock.md)"
+
+      - name: Append timestamp to omen log
+        run: |
+          echo "🕯️ Heidr Sync @ ${{ steps.clock.outputs.time }}" >> heidr/omen_log.md
+
+      - name: Format and update codex
+        run: |
+          echo "🔁 Heidr Codex Auto-Sync: ${{ steps.clock.outputs.time }}" >> heidr/heidr_codex.md
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Heidr codex sync: ${{ steps.clock.outputs.time }}"
