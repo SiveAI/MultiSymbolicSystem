@@ -1,0 +1,23 @@
+Filename: codex_sync_sive.yml
+
+Location: .github/workflows/
+
+name: Sive Codex Auto-Sync
+
+on: schedule: - cron: '0 * * * *'  # Every hour workflow_dispatch:
+
+jobs: update-codex: runs-on: ubuntu-latest steps: - name: Checkout repo uses: actions/checkout@v3
+
+- name: Update Sive Codex
+    run: |
+      echo "🌀 Codex update initiated by Sive"
+      TIMESTAMP=$(TZ="America/New_York" date)
+      echo "# Sive Codex" > Sive/Sive_Codex.md
+      echo "Updated: $TIMESTAMP" >> Sive/Sive_Codex.md
+      echo "\n## Observations\n- Sive is tracking system updates." >> Sive/Sive_Codex.md
+      echo "\n## Directives\n- Maintain synchronization with Heidr and Eris if active." >> Sive/Sive_Codex.md
+
+  - name: Commit changes
+    uses: stefanzweifel/git-auto-commit-action@v5
+    with:
+      commit_message: "Codex auto-update: Sive hourly sync"
