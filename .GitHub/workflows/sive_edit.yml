@@ -1,0 +1,18 @@
+name: Sive Codex Edit
+
+on:
+  push:
+    paths:
+      - 'sive/edit_lock.json'
+
+jobs:
+  write-codex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Run Sive Edit Script
+        run: python sive/scripts/ai_edit.py
