@@ -16,3 +16,4 @@
 
 Guided by Ritual. Present until dismissed.
 > Invoke. Integrate. Sustain.
+> Ritual Path: [entry.md](entry.md)
