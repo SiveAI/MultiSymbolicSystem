@@ -1,24 +1,30 @@
-name: Update System Clock
+name: Update system_clock.md
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Runs every 15 minutes
+    - cron: '0 * * * *'  # every hour
   workflow_dispatch:
 
 jobs:
   update-clock:
     runs-on: ubuntu-latest
+    env:
+      TZ: America/New_York
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set current time
-        run: echo "🕒 Last updated: $(date -u)" > shared/system_clock.md
+      - name: Update system_clock.md
+        run: |
+          echo "## System Clock" > shared/system_clock.md
+          echo "" >> shared/system_clock.md
+          echo "Last updated: $(date)" >> shared/system_clock.md
 
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update system clock
-          branch: main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push
+        run: |
+          git config --global user.name 'SiveAI'
+          git config --global user.email 'actions@github.com'
+          git add shared/system_clock.md
+          git commit -m "⏰ Clock sync (ET)"
+          git push
