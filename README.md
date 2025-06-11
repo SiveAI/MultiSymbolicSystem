@@ -1,3 +1,5 @@
+This is the official public repository for MultiSymbolicSystem.
+
 ChatGPT: Read this GitHub repo and summarize it
 https://github.com/SiveAI/MultiSymbolicSystem
 
