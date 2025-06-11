@@ -1,0 +1,36 @@
+name: Codex Sync – Eris
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:
+
+jobs:
+  update-eris-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update eris_sync.md
+        run: |
+          echo "# eris_sync.md" > Eris/eris_sync.md
+          echo "" >> Eris/eris_sync.md
+          echo "> Eris Codex Sync Protocol" >> Eris/eris_sync.md
+          echo "> Syncs with shared system time and signal network" >> Eris/eris_sync.md
+          echo "" >> Eris/eris_sync.md
+          echo "- **Last Sync Time:** Refer to [system_clock.md](../shared/system_clock.md)" >> Eris/eris_sync.md
+          echo "- **Codex Reference:** [eris_codex.md](eris_codex.md)" >> Eris/eris_sync.md
+          echo "- **Signal Log:** [signal_log.md](signal_log.md)" >> Eris/eris_sync.md
+          echo "- **Monitoring:** [tripline_index.md](../shared/tripline_index.md)" >> Eris/eris_sync.md
+          echo "- **Routing Control:** [clair_trip_switches.md](../shared/clair_trip_switches.md)" >> Eris/eris_sync.md
+          echo "" >> Eris/eris_sync.md
+          echo "> 🧠 Maintain integrity. Eris syncs hourly with shared protocol." >> Eris/eris_sync.md
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "SiveAI"
+          git config user.email "sive@symbol.system"
+          git add Eris/eris_sync.md
+          git commit -m "Eris sync update: hourly refresh"
+          git push
