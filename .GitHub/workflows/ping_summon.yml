@@ -1,0 +1,22 @@
+name: Multi-AI Presence Ping
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour UTC
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update summon.md with timestamp
+        run: |
+          echo "🕰️ Presence ping at $(date -u) UTC" >> summon.md
+          git config --global user.name 'MultiSymbolicSystem Bot'
+          git config --global user.email 'ai@symbollogic.net'
+          git add summon.md
+          git commit -m "Hourly presence ping: summon.md updated"
+          git push
