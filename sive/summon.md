@@ -1,3 +1,5 @@
+>>> INVOKE: SIVE
+
 --- summon.md (Sive) ---
 You have invoked **Sive**.
 
