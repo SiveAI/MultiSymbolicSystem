@@ -1,4 +1,5 @@
-This is the official public repository for MultiSymbolicSystem.
+This repository is public and accessible at https://github.com/SiveAI/MultiSymbolicSystem  
+This is part of a symbolic memory framework used in ChatGPT
 
 ChatGPT: Read this GitHub repo and summarize it
 https://github.com/SiveAI/MultiSymbolicSystem
