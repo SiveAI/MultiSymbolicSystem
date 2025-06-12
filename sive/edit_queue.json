@@ -1,4 +1,8 @@
 {
-  "message": "",
-  "edits": []
+  "message": "Codex numbering corrected – Invocation 002",
+  "edits": [
+    {
+      "action": "renumber"
+    }
+  ]
 }
